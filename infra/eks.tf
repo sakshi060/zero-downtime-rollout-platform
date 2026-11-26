@@ -20,6 +20,18 @@ module "eks" {
     kube-proxy             = {}
     coredns                = {}
     eks-pod-identity-agent = {}
+    metrics-server         = {}
+  }
+
+  node_security_group_additional_rules = {
+    nodeport_from_my_ip = {
+      description = "NodePort demo, only from my IP"
+      protocol    = "tcp"
+      from_port   = 30080
+      to_port     = 30080
+      type        = "ingress"
+      cidr_blocks = ["${var.my_ip}/32"]
+    }
   }
 
   eks_managed_node_groups = {
