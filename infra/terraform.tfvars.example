@@ -1,0 +1,2 @@
+cluster_version = "1.36"
+my_ip           = "x.x.x.x"
