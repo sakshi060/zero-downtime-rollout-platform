@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: app
+data:
+  ORDERS_URL: "http://orders-api:8000"
+  UPSTREAM_TIMEOUT: "2"
+  FAIL_RATE: "0"
