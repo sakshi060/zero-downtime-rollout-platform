@@ -65,7 +65,7 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["sleep", "5"]
+                command: ["sleep", "15"]
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true

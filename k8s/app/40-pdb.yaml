@@ -1,0 +1,21 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: orders-api
+  namespace: app
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: orders-api
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: gateway
+  namespace: app
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: gateway
