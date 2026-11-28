@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app-services
+  namespace: app
+spec:
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values: [orders-api, gateway]
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s

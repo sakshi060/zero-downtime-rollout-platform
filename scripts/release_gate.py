@@ -20,8 +20,8 @@ def query_prometheus(base_url, promql):
 def error_rate(base_url, namespace, service):
     selector = f'namespace="{namespace}",service="{service}"'
     promql = (
-        f'sum(rate(http_requests_total{{{selector},status=~"5.."}}[1m]))'
-        f' / sum(rate(http_requests_total{{{selector}}}[1m]))'
+        f'sum(rate(http_requests_total{{{selector},path!~"/health|/ready|/metrics",status=~"5.."}}[1m]))'
+        f' / sum(rate(http_requests_total{{{selector},path!~"/health|/ready|/metrics"}}[1m]))'
     )
     value = query_prometheus(base_url, promql)
     if value is None or value != value:

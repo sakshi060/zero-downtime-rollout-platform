@@ -77,6 +77,8 @@ kind: Service
 metadata:
   name: orders-api
   namespace: app
+  labels:
+    app: orders-api
 spec:
   type: ClusterIP
   selector:

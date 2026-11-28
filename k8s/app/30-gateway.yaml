@@ -75,6 +75,8 @@ kind: Service
 metadata:
   name: gateway
   namespace: app
+  labels:
+    app: gateway
 spec:
   type: ClusterIP
   selector:
